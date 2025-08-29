@@ -10,37 +10,46 @@
 </head>
 <body>
 
-    <h1> Calculadora Simples </h1>
-    <form action='<?php $_SERVER["PHP_SELF"] ?>' method="post">
+    <h1>Calculadora Simples</h1>
+    <form action='<?php echo $_SERVER["PHP_SELF"]; ?>' method="post">
         <label for="num1">Num1: </label>
-        <input type="text" name="num1">
+        <input type="text" name="num1" required>
         <label for="num2">Num2: </label>
-        <input type="text" name="num2">
-
-        <input type="submit"> <input type="reset" value="reset">
+        <input type="text" name="num2" required>
+        <label for="operation">Operação: </label>
+        <select name="operation" required>
+            <option value="add">Adição (+)</option>
+            <option value="subtract">Subtração (-)</option>
+            <option value="multiply">Multiplicação (×)</option>
+            <option value="divide">Divisão (÷)</option> <!-- NOVO -->
+        </select>
+        <input type="submit" value="Calcular">
+        <input type="reset" value="Reset">
     </form>
 
     <?php
-
-        //Variáveis
+        // Variáveis
         $num1 = 0;
         $num2 = 0;
         $total = 0;
+        $operator = '';
 
-        if(isset($_POST["num1"]) && $_POST["num1"]){
-            //Entradas
-            $num1 = $_POST["num1"];
-            $num2 = $_POST["num2"];
+        if (isset($_POST["num1"]) && isset($_POST["num2"]) && isset($_POST["operation"])) {
+            // Entradas
+            $num1 = floatval($_POST["num1"]);
+            $num2 = floatval($_POST["num2"]);
+            $operation = $_POST["operation"];
 
             //Processamento
             $total = $num1 + $num2;
-            
+
             //Saída
             echo "<br> <br> <br>";
             echo "<h2>" .$num1. " + " .$num2. " = " .$total. "</h2>";
         }
-
     ?>
 
 </body>
 </html>
+
+
