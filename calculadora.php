@@ -20,6 +20,7 @@
         <select name="operation" required>
             <option value="add">Adição (+)</option>
             <option value="subtract">Subtração (-)</option>
+            <option value="multiply">Multiplicação (×)</option>
         </select>
         <input type="submit" value="Calcular">
         <input type="reset" value="Reset">
@@ -45,6 +46,9 @@
             } elseif ($operation == "subtract") {
                 $total = $num1 - $num2;
                 $operator = "-";
+            } elseif ($operation == "multiply") {
+                $total = $num1 * $num2;
+                $operator = "×";
             }
 
             // Saída
