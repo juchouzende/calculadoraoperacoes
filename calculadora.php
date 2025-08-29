@@ -21,6 +21,7 @@
             <option value="add">Adição (+)</option>
             <option value="subtract">Subtração (-)</option>
             <option value="multiply">Multiplicação (×)</option>
+            <option value="divide">Divisão (÷)</option> <!-- NOVO -->
         </select>
         <input type="submit" value="Calcular">
         <input type="reset" value="Reset">
@@ -49,6 +50,14 @@
             } elseif ($operation == "multiply") {
                 $total = $num1 * $num2;
                 $operator = "×";
+            } elseif ($operation == "divide") {
+                $operator = "÷";
+                if ($num2 != 0) {
+                    $total = $num1 / $num2;
+                } else {
+                    echo "<br><br><h2>Erro: Divisão por zero não é permitida.</h2>";
+                    exit(); // Para evitar mostrar resultado inválido
+                }
             }
 
             // Saída
@@ -59,3 +68,5 @@
     
 </body>
 </html>
+
+
