@@ -6,7 +6,6 @@
     <title>Calculadora Simples</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
 </head>
 <body>
 
@@ -21,35 +20,57 @@
             <option value="add">Adição (+)</option>
             <option value="subtract">Subtração (-)</option>
             <option value="multiply">Multiplicação (×)</option>
-            <option value="divide">Divisão (÷)</option> <!-- NOVO -->
+            <option value="divide">Divisão (÷)</option>
         </select>
         <input type="submit" value="Calcular">
         <input type="reset" value="Reset">
     </form>
 
     <?php
-        // Variáveis
-        $num1 = 0;
-        $num2 = 0;
-        $total = 0;
-        $operator = '';
-
         if (isset($_POST["num1"]) && isset($_POST["num2"]) && isset($_POST["operation"])) {
             // Entradas
             $num1 = floatval($_POST["num1"]);
             $num2 = floatval($_POST["num2"]);
             $operation = $_POST["operation"];
+            $total = 0;
+            $symbol = '';
+            $error = '';
 
-            //Processamento
-            $total = $num1 + $num2;
+            // Processamento
+            switch ($operation) {
+                case 'add':
+                    $total = $num1 + $num2;
+                    $symbol = '+';
+                    break;
+                case 'subtract':
+                    $total = $num1 - $num2;
+                    $symbol = '-';
+                    break;
+                case 'multiply':
+                    $total = $num1 * $num2;
+                    $symbol = '×';
+                    break;
+                case 'divide':
+                    if ($num2 != 0) {
+                        $total = $num1 / $num2;
+                        $symbol = '÷';
+                    } else {
+                        $error = "Erro: Divisão por zero não é permitida.";
+                    }
+                    break;
+                default:
+                    $error = "Operação inválida.";
+            }
 
-            //Saída
-            echo "<br> <br> <br>";
-            echo "<h2>" .$num1. " + " .$num2. " = " .$total. "</h2>";
+            // Saída
+            echo "<br><br><br>";
+            if ($error) {
+                echo "<h2 style='color:red;'>$error</h2>";
+            } else {
+                echo "<h2>$num1 $symbol $num2 = $total</h2>";
+            }
         }
     ?>
 
 </body>
 </html>
-
-
