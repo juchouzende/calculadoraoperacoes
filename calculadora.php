@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <h1> Calculadora Simples </h1>
+    <h1> Calculadora Simples 2.0 </h1>
     <form action='<?php $_SERVER["PHP_SELF"] ?>' method="post">
         <label for="num1">Num1: </label>
         <input type="text" name="num1">
@@ -28,6 +28,8 @@
         $total = 0;
 
         if(isset($_POST["num1"]) && $_POST["num1"]){
+
+            //João Pedro
             //Entradas
             $num1 = $_POST["num1"];
             $num2 = $_POST["num2"];
