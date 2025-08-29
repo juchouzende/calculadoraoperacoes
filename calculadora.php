@@ -34,13 +34,13 @@
 
             //Processamento
             $total = $num1 + $num2;
-
+            
             //Saída
             echo "<br> <br> <br>";
             echo "<h2>" .$num1. " + " .$num2. " = " .$total. "</h2>";
         }
 
     ?>
-    
+
 </body>
 </html>
